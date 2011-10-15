@@ -1,7 +1,0 @@
-<h1>WordPress Admin Kit</h1>
-
-<p>Pretty often I need some functions for the theme that add support for meta-post-data or other options. To generalize these functions I created this Kit. </p>
-
-<p>Please just use it as you need it and add functions that can help anyone. I'll license it under <a href="http://unlicense.org/">Unlicense</a>.</p>
-
-<p>This is <strong>no</strong> WordPress-theme.</p>
