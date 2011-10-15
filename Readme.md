@@ -4,4 +4,4 @@ Pretty often I need some functions for the theme that add support for meta-post-
 
 Please just use it as you need it and add functions that can help anyone. I'll license it under [Unlicense](http://unlicense.org).
 
-This is _no_ WordPress-theme.
+This is *no* WordPress-theme.
