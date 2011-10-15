@@ -1,0 +1,82 @@
+/**
+ *  CSS-Syles for WordPress admin-panel
+ *
+ *  Created 2011 by /gebruederheitz - Freiburg/Germany
+ *  kontakt@gebruederheitz.de - @gebruederheitz
+ *
+ *  Developed by
+ *  Hans Christian Reinl
+ *  h@ghdev.de - @drublic 
+ */
+
+
+
+h2 { margin: 30px 10px 20px; font: italic 30px Georgia, "Times New Roman", Times, serif; }
+h4 { margin: 10px 0 0; font-size: 120%; }
+
+.labelpadding { padding: 12px 10px 5px; }
+.labelpadding label { font-weight: bold; }
+
+
+
+/* Messages */
+#message { padding: 0 20px; background: #fffbcc; border: 1px solid #e6db55; margin: 20px 20px 20px 10px;  }
+
+
+
+
+/* Tabs */
+
+/* Root element of tabs  */
+.big-tabs { display: inline-block; list-style: none; margin: 0 0 -1px; padding: 0; overflow: hidden; padding-left: 10px; }
+.big-tabs .title { font: italic 15px Georgia, "Times New Roman", Times, serif; padding: 5px 10px 0 0; }
+.big-tabs li { position: relative; z-index: 10; float: left; padding: 0 5px 0 0; margin: 0; list-style-image: none; }
+
+/* link inside the tab. uses a background image */
+.big-tabs a { display: block; border: 1px solid #ddd; border-bottom: none; width: auto; text-align: center; text-decoration: none; color: #aaa; font: italic 15px/20px Georgia, "Times New Roman", Times, serif; padding: 2px 10px; }
+.big-tabs a:active,
+.big-tabs a:active { outline: none; }
+.tabs.big-tabs a { padding: 5px 20px; font-size: 25px; line-height: 35px;  }
+
+/* when mouse enters the tab move the background image */
+.big-tabs a:hover { color: #d54e21; }
+.big-tabs .current a { color: #333; border-color: #ccc; border-bottom: 1px solid #f9f9f9; }
+.big-tabs .current a:hover { color: #d54e21; }
+
+/* Initially all Tab-Content is hidden */
+#tabs .inner { display: none; border-top: 1px solid #ccc; }
+#tabs .inner.first { display: block; }
+
+
+
+
+
+/* Rounded Corners */
+#message {
+ -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+     -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+         border-radius: 5px;
+}
+.tabs a {
+ -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+  -khtml-border-radius: 5px 5px 0 0;
+     -ms-border-radius: 5px 5px 0 0;
+      -o-border-radius: 5px 5px 0 0;
+         border-radius: 5px 5px 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
