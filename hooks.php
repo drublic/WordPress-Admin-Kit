@@ -82,31 +82,6 @@ function haufe_init() {
 		)
 	);
 	
-	// create a new taxonomy for 'Vortäge'
-	register_taxonomy(
-		'talk_category',
-		'talk',
-		array(
-		  'hierarchical' => true,
-      'labels' => array(
-        'name' => _x( 'Kategorie', 'taxonomy general name' ),
-        'singular_name' => _x( 'Kategorie', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Kategorie durchsuchen' ),
-        'all_items' => __( 'Alle Kategorien' ),
-        'parent_item' => __( '&Uuml;bergeordnete Kategorie' ),
-        'parent_item_colon' => __( '&Uuml;bergeordnete Kategorie:' ),
-        'edit_item' => __( 'Kategorie bearbeiten' ), 
-        'update_item' => __( 'Kategorie aktualisieren' ),
-        'add_new_item' => __( 'Neue Kategorie hinzuf&uuml;gen' ),
-        'new_item_name' => __( 'Neuer Kategorie-Name' ),
-        'menu_name' => __( 'Kategorien' )
-      ),
-		  'sort' => true,
-			'args' => array('orderby' => 'term_order'),
-			'rewrite' => array('slug' => 'kongress')
-		)
-	);
-	
 	
   // Register some Scripts
   if (!is_admin()) {
@@ -133,8 +108,9 @@ function haufe_init() {
  *
  */
 function script_loader_filter ($src) {
-  if (FALSE === strpos ($src, 'http://ajax.googleapis.com/'))
+  if (FALSE === strpos ($src, '//ajax.googleapis.com/')) {
     return $src;
+  }
   $new_src = explode('?', $src);
   return $new_src[0];
   

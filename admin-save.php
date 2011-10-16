@@ -20,80 +20,81 @@
  *  @return
  */
 
-if ( !function_exists('save_postdata') ) :
-function save_postdata( $post_id ) {
-  global $experts_info, $talk_info, $books_info, $flag;
+if ( !function_exists('save_postdata') ) {
 
-	$options = array_merge($experts_info, $books_info, $talk_info);
-	
-  if ($flag == 0) :
-    
-    
-    /**
-     *  Checks if array is in array
-     *
-     *  @param array $needle - array to check
-     *  @param array $haystack - array to check against
-     *  @param string $field - name of field to check for
-     *
-     *  @retrun bool
-    */
-    function check_array ($needle, $haystack, $field = 'name') {
-      for ($countr = 0; $countr < count($haystack); $countr++) :
-        if ($haystack[$countr][$field] == $needle) return true;
-      endfor;
-
-      return false;
-    }
-    
-    
-    $i = 1;
-    // Append asynchronously added things
-    foreach ($_POST as $para => $meter) :
-      if (!check_array($para, $options) && substr($para, -9) != 'noncename') :
-        array_push ($options, array ('name' => $para));
-        $i++;
-      endif;
-    endforeach;
-    
-    
-    // Itterate through options for save
-		foreach( $options as $meta_box ) :
-		  if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
-        return $post_id;
-
-      if ( 'page' == $_POST['post_type'] ) :
-        if ( !current_user_can( 'edit_page', $post_id )) :
-				  return $post_id;
-				endif;
-      else :
-				if ( !current_user_can( 'edit_post', $post_id )) :
-          return $post_id;
-        endif;
-			endif;
+  function save_postdata( $post_id ) {
+    global $experts_info, $talk_info, $books_info, $flag;
+  
+  	$options = array_merge($experts_info, $books_info, $talk_info);
+  	
+    if ($flag == 0) {
       
-      $data = '';
-      if (gettype ($_POST[$meta_box['name']]) == 'string')
-        $data = trim($_POST[$meta_box['name']]);
+      
+      /**
+       *  Checks if array is in array
+       *
+       *  @param array $needle - array to check
+       *  @param array $haystack - array to check against
+       *  @param string $field - name of field to check for
+       *
+       *  @retrun bool
+      */
+      function check_array ($needle, $haystack, $field = 'name') {
+        for ($countr = 0; $countr < count($haystack); $countr++) {
 
+          // If found, return true
+          if ($haystack[$countr][$field] == $needle) {
+            return true;
+          }
+        }
+  
+        return false;
+      }
+      
+      
+      $i = 1;
+      // Append asynchronously added things
+      foreach ($_POST as $para => $meter) {
+        if (!check_array($para, $options) && substr($para, -9) != 'noncename') {
+          array_push ($options, array ('name' => $para));
+          $i++;
+        endif;
+      }
+      
+      
+      // Itterate through options for save
+  		foreach( $options as $meta_box ) {
+  		  if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+          return $post_id;
+  
+        if ( 'page' == $_POST['post_type'] && !current_user_can( 'edit_page', $post_id ) ) {
+  				return $post_id;
+        } elseif ( !current_user_can( 'edit_post', $post_id )) {
+          return $post_id;
+  			}
+        
+        $data = '';
+        if (gettype ($_POST[$meta_box['name']]) == 'string') {
+          $data = trim($_POST[$meta_box['name']]);
+        }
+  
+  
+        // Update or delete post meta data
+        if ($data == '') {
+          delete_post_meta($post_id, $meta_box['name'], get_post_meta($post_id, $meta_box['name'], true));
+  			} else {
+          update_post_meta($post_id, $meta_box['name'], $data);
+        }
+  
+  		}
+  
+  
+  	} // With flag == 0
+  
+    $flag = 1;
+  }
 
-      // Update or delete post meta data
-      if ($data == '') :
-        delete_post_meta($post_id, $meta_box['name'], get_post_meta($post_id, $meta_box['name'], true));
-
-			else :
-        update_post_meta($post_id, $meta_box['name'], $data);
-
-      endif;
-
-		endforeach;
-
-
-	endif; // With flag == 0
-
-  $flag = 1;
 }
-endif;
 
 
 // Add post-saving if user's an admin

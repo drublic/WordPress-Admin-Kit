@@ -5,7 +5,7 @@
  * Displayed in Appereance -> Theme Einstellungen
  */
 $theme_options = array ();
-if ( is_admin() )
+if ( is_admin() ) {
   array_push ( $theme_options,
     
     // General options
@@ -49,6 +49,7 @@ if ( is_admin() )
 		array('type'    => 'close')
 		
   );
+}
 
 
 /**
@@ -113,37 +114,39 @@ function haufe_add_admin_options () {
 		if ('save' == $_REQUEST['action'] ) {
 		  
 		  // Itterate through options and deal with them
-			foreach ($theme_options as $value) :
+			foreach ($theme_options as $value) {
 				
-				if( isset( $_REQUEST[ $value['name'] ] ) ) :
+				if ( isset($_REQUEST[$value['name']]) ) {
 				
 				  $val = $_REQUEST[ $value['name'] ];
-					if ($value['type'] == 'textarea')
+					if ($value['type'] == 'textarea') {
             $val = stripslashes( $val );
+          }
 
 					update_option( $value['name'], $val );
-				
-				else :
+				} else {
 				  delete_option( $value['name'] );
-
-				endif;
+				}
         
         $val = '';
-			endforeach;
+			}
 			
 			// If there is another anchor set in the request
 			$anchor = '';
-			if ($_REQUEST['anchor'] !== '') $anchor = $_REQUEST['anchor'];
+			if ($_REQUEST['anchor'] !== '') {
+			  $anchor = $_REQUEST['anchor'];
+			}
 
       // Go to location and quit script
 			header ('Location: admin.php?page=themes.php&page=' . $page . '&saved=true'.$anchor);
-			die;
+			wp_die();
 		}
 	}
 	
 	// Add options-page in back-end menu
-	if ( function_exists('add_submenu_page') )
+	if ( function_exists('add_submenu_page') ) {
     add_submenu_page('themes.php', __('Theme Einstellungen'), __('Theme Einstellungen'), 'manage_options', $page, 'haufe_admin_options');
+  }
 
 }
 

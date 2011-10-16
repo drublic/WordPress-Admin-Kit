@@ -20,12 +20,25 @@ h4 { margin: 10px 0 0; font-size: 120%; }
 
 
 /* Messages */
-#message { padding: 0 20px; background: #fffbcc; border: 1px solid #e6db55; margin: 20px 20px 20px 10px;  }
+#message {
+  background: #fffbcc;
+  padding: 0 20px;
+  border: 1px solid #e6db55;
+  margin: 20px 20px 20px 10px;
+ -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+         border-radius: 5px;
+}
 
 
 
 
 /* Tabs */
+.tabs a {
+ -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+         border-radius: 5px 5px 0 0;
+}
 
 /* Root element of tabs  */
 .big-tabs { display: inline-block; list-style: none; margin: 0 0 -1px; padding: 0; overflow: hidden; padding-left: 10px; }
@@ -49,25 +62,6 @@ h4 { margin: 10px 0 0; font-size: 120%; }
 
 
 
-
-
-/* Rounded Corners */
-#message {
- -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-  -khtml-border-radius: 5px;
-     -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-         border-radius: 5px;
-}
-.tabs a {
- -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-  -khtml-border-radius: 5px 5px 0 0;
-     -ms-border-radius: 5px 5px 0 0;
-      -o-border-radius: 5px 5px 0 0;
-         border-radius: 5px 5px 0 0;
-}
 
 
 

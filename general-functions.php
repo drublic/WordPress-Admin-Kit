@@ -93,19 +93,19 @@ function bo_select ($name, $title, $options, $description, $std, $post_id = '') 
        <td>
          <select name="'.$name.'" />';
 
-  foreach ($options as $opt_val => $option) :
+  foreach ($options as $opt_val => $option) {
 		$output .= '<option value="' . $opt_val . '"';
 		
-		if (!empty($post_id)) :
-		  if (get_post_meta ($post_id, $name.'', true) == $opt_val) :
+		if (!empty($post_id)) {
+		  if (get_post_meta ($post_id, $name.'', true) == $opt_val)  {
 		    $output .= ' selected';
-		  endif;
-		elseif ($std == $opt_val) :
+		  }
+		} elseif ($std == $opt_val) {
 		  $output .= ' selected';
-		endif;
+		}
 
     $output .= '>'.$option.'</option>';
-	endforeach;
+	}
 	
 	$output .= '</select><br>
 	   <span class="mbdesc">'.$description.'</span>
@@ -127,7 +127,9 @@ function bo_select ($name, $title, $options, $description, $std, $post_id = '') 
  */
 function bo_checkbox ($name, $title, $desciption, $post_id) {
   $checked = '';
-  if (get_post_meta($post_id, $name.'', true) != '') $checked = ' checked="checked"';
+  if (get_post_meta($post_id, $name.'', true) != '') {
+    $checked = ' checked="checked"';
+  }
   
   $output = 
     '<tr>
@@ -155,15 +157,17 @@ function bo_checkbox ($name, $title, $desciption, $post_id) {
 function bo_checkboxes ($name, $title, $options, $desciption, $post_id) {
   $output = '<tr><th scope="row">' . $title . '</td><td>';
 
-  foreach ( $options as $key => $val) :
+  foreach ( $options as $key => $val) {
     $checked = '';
-    if (get_post_meta($post_id, $name.'-'.$key, true) != '') $checked = ' checked="checked"';
+    if (get_post_meta($post_id, $name.'-'.$key, true) != '') {
+      $checked = ' checked="checked"';
+    }
   
 		$output .= '<div>
 		  <input type="checkbox" id="'.$name.'-' . $key . '" name="'.$name.'-' . $key . '" '.$checked.' class="checkbox" value="' . $key . '">
       <label for="'.$name.'-' . $key .'">'.$val.'</label>
     </div>';
-	endforeach;
+	}
   
   $output .= '<span class="mbdesc">'.$description.'</span></td></tr>';
   
@@ -183,11 +187,11 @@ function bo_checkboxes ($name, $title, $options, $desciption, $post_id) {
 function bo_imageupload ($title, $description) {
   $output = '<tr>';
   
-  if ($title != '') :
+  if ($title != '') {
     $output .= '<th scope="row">
          <label>'.$title.'</label>
        </th>';
-  endif;
+  }
   
   $output .= '<td>
          <a class="button thickbox" href="media-upload.php?&amp;type=image&amp;TB_iframe=true" id="add_image" title="Image Upload" onclick="jQuery(this).attr(\'href\',jQuery(this).attr(\'href\').replace(\'\?\',\'?post_id=\'+jQuery(\'#post_ID\').val())); return thickbox(this);">Dateien hochladen und URL auslesen</a><br />
@@ -317,29 +321,29 @@ function bo_box_buttons () {
 function new_options ($type, $page, $details) {
   
   // Do some init stuff
-  if ($type == 'posts') :
+  if ($type == 'posts') {
     global $post;
     print '<table class="form-table metabox"><tbody>';
-  endif;
+  }
 
 
-  foreach( $details as $option ) :
+  foreach( $details as $option ) {
     
     // Standard value for field
     $option_value = '';
     
     // Get post-meta for posts
-    if ($type == 'posts') :
+    if ($type == 'posts') {
       $option_value = ( get_post_meta($post->ID, $option['name'].'', true) != '') ? get_post_meta($post->ID, $option['name'].'', true) : $option['std'];
     // And options for theme
-    elseif ($type == 'theme') :
+    } elseif ($type == 'theme') {
 		  $option_value = ( get_option( $option['name'] ) != '') ? get_option( $option['name'] ) : $option['std'];
-		endif;
+		}
 		
 		
 		
 		// Print what is needed depending on option-type
-		switch ( $option['type'] ) :
+		switch ( $option['type'] ) {
 		  
 		  // Open Tab - Only for Theme-Options
 			case 'open':
@@ -415,12 +419,12 @@ function new_options ($type, $page, $details) {
 			  break;
 	*/
 			
-		endswitch;
-	endforeach;
+		} // endswitch
+	} // endforeach
 	
-	if ($type == 'posts' && ! $page ) :
+	if ($type == 'posts' && ! $page ) {
     print '</tbody></table>';
-  endif;
+  }
     
 }
 
