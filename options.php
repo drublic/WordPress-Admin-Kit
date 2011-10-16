@@ -73,12 +73,12 @@ function options_tabs () {
  *
  *  @return string
 */
-function haufe_admin_options () {
+function wpak_admin_options () {
   global $theme_options;
   
   $saved = ( $_REQUEST['saved'] ) ? true : false;
   
-  bo_form_header ('Generelle Einstellungen', 'haufe_admin_options', $saved);
+  bo_form_header ('Generelle Einstellungen', 'wpak_admin_options', $saved);
   
   options_tabs ();
   
@@ -96,7 +96,7 @@ function haufe_admin_options () {
 
 // Add Admin-Options if we are admin
 if (is_admin ())
-  add_action('admin_menu', 'haufe_add_admin_options');
+  add_action('admin_menu', 'wpak_add_admin_options');
 
 
 /**
@@ -104,7 +104,7 @@ if (is_admin ())
  *
  * @retun
 */
-function haufe_add_admin_options () {	
+function wpak_add_admin_options () {	
 	global $theme, $theme_code, $theme_options;
 	
 	$page = 'options';
@@ -145,7 +145,7 @@ function haufe_add_admin_options () {
 	
 	// Add options-page in back-end menu
 	if ( function_exists('add_submenu_page') ) {
-    add_submenu_page('themes.php', __('Theme Einstellungen'), __('Theme Einstellungen'), 'manage_options', $page, 'haufe_admin_options');
+    add_submenu_page('themes.php', __('Theme Einstellungen'), __('Theme Einstellungen'), 'manage_options', $page, 'wpak_admin_options');
   }
 
 }

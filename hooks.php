@@ -1,15 +1,15 @@
 <?php
 
-// Tell WordPress to run haufe_setup() when the 'after_setup_theme' hook is called
-add_action( 'after_setup_theme', 'haufe_setup' );
+// Tell WordPress to run wpak_setup() when the 'after_setup_theme' hook is called
+add_action( 'after_setup_theme', 'wpak_setup' );
 
-if ( ! function_exists( 'haufe_setup' ) ):
+if ( ! function_exists( 'wpak_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
- * @since Haufe Apps 1.0
+ * @since WordPress Admin-Kit 1.0
  */
-function haufe_setup() {
+function wpak_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style('css/editor-style.css');
@@ -38,13 +38,13 @@ endif;
  * To override this in a child theme, remove the filter and optionally add
  * your own function tied to the wp_page_menu_args filter hook.
  *
- * @since Haufe Apps 1.0
+ * @since WordPress Admin-Kit 1.0
  */
-function haufe_page_menu_args( $args ) {
+function wpak_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'haufe_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'wpak_page_menu_args' );
 
 
 
@@ -54,8 +54,8 @@ add_filter( 'wp_page_menu_args', 'haufe_page_menu_args' );
 
 
 
-add_action( 'init', 'haufe_init' );
-function haufe_init() {
+add_action( 'init', 'wpak_init' );
+function wpak_init() {
 	
 	// create a new taxonomy for 'Bücher'
 	register_taxonomy(
@@ -124,7 +124,7 @@ add_filter('script_loader_src', 'script_loader_filter');
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
  *
- * @since Haufe Apps 1.0
+ * @since WordPress Admin-Kit 1.0
  */
 function remove_recent_comments_style() {
 	global $wp_widget_factory;
@@ -136,7 +136,7 @@ add_action( 'widgets_init', 'remove_recent_comments_style' );
 /**
  * Removes the default styles of a gallery
  *
- * @since Haufe Apps 1.0
+ * @since WordPress Admin-Kit 1.0
  */
 function remove_gallery_style( $a ) {
   return preg_replace("%<style type=\'text/css\'>(.*?)</style>%s", "", $a);

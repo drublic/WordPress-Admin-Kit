@@ -2,13 +2,13 @@
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  *
- * To override haufeapps_widgets_init() in a child theme, remove the action hook and add your own
+ * To override wpak_widgets_init() in a child theme, remove the action hook and add your own
  * function tied to the init hook.
  *
- * @since Twenty Ten 1.0
+ * @since WordPress Admin-Kit 1.0
  * @uses register_sidebar
  */
-function haufeapps_widgets_init() {
+function wpak_widgets_init() {
 
 
 	// Sidebar. Empty by default.
@@ -50,8 +50,8 @@ function haufeapps_widgets_init() {
 	
 }
 
-/** Register sidebars by running haufeapps_widgets_init() on the widgets_init hook. */
-add_action( 'widgets_init', 'haufeapps_widgets_init' );
+/** Register sidebars by running wpak_widgets_init() on the widgets_init hook. */
+add_action( 'widgets_init', 'wpak_widgets_init' );
 
 
 
