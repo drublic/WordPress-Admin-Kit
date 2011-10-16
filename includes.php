@@ -13,7 +13,7 @@ require('elements.php');
 require('widgets.php');
 
 // Theme-options
-require('theme-options.php')
+require('theme-options.php');
 
 
 
