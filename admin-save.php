@@ -58,7 +58,7 @@ if ( !function_exists('save_postdata') ) {
         if (!check_array($para, $options) && substr($para, -9) != 'noncename') {
           array_push ($options, array ('name' => $para));
           $i++;
-        endif;
+        }
       }
       
       
