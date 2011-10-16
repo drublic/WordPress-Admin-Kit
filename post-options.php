@@ -14,8 +14,7 @@ $general_details = array (
 
 function general_details () {
   global $general_details;
-  bo_styles();
-  new_meta_boxes( false, $general_details);
+  new_options( 'posts', false, $general_details);
 }
 
 function create_meta_box () {
