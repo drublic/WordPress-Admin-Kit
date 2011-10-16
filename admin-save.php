@@ -23,9 +23,9 @@
 if ( !function_exists('save_postdata') ) {
 
   function save_postdata( $post_id ) {
-    global $experts_info, $talk_info, $books_info, $flag;
+    global $general_details, $flag;
   
-  	$options = array_merge($experts_info, $books_info, $talk_info);
+  	$options = $general_details; // array_merge($general_details);
   	
     if ($flag == 0) {
       
