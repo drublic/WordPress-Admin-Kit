@@ -18,5 +18,7 @@ require('theme-options.php');
 // Post-options
 require('post-options.php');
 
+// Save all options
+require('admin-save.php');
 
 
