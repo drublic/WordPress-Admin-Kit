@@ -15,5 +15,8 @@ require('widgets.php');
 // Theme-options
 require('theme-options.php');
 
+// Post-options
+require('post-options.php');
+
 
 
