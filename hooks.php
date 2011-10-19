@@ -151,8 +151,9 @@ add_filter('gallery_style', 'remove_gallery_style');
  *  Registers a new 'read more'-link for excerpts.
  */
 function new_excerpt_more($more) {
-       global $post;
-	return '<p><a title="' . $option['linkto'] . $post->post_title.'" class="more-link" href="'. get_permalink($post->ID) . '">' . $option['readmore'] . '</a></p>';
+  global $post, $wpak_options;
+
+	return '<p><a title="' . $wpak_options['linkto'] . $post->post_title.'" class="more-link" href="'. get_permalink($post->ID) . '">' . $wpak_options['readmore'] . '</a></p>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 

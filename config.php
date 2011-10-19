@@ -1,10 +1,10 @@
 <?php
 
-$option = array();
+$wpak_options = array();
 
 
-$option['readmore'] = 'Read more';
-$option['linkto'] = 'Link to';
+$wpak_options['readmore'] = 'Read more';
+$wpak_options['linkto'] = 'Link to';
 
 
 
