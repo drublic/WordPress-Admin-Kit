@@ -158,21 +158,6 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 
 
-
-// Shortcode [talks year="value"]
-function talks_func( $atts ) {
-  global $post_query_talk;
-  $post_query_talk = 'post_type=talk&talk_category=' . $atts['year'];
-  
-}
-add_shortcode( 'talks', 'talks_func' );
-
-
-
-
-
-add_filter( 'show_admin_bar', '__return_false' );
-
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'start_post_rel_link');
