@@ -152,7 +152,7 @@ add_filter('gallery_style', 'remove_gallery_style');
  */
 function new_excerpt_more($more) {
        global $post;
-	return '<p><a title="Link zu '.$post->post_title.'" class="more-link" href="'. get_permalink($post->ID) . '">' . 'Lesen Sie mehr' . '</a></p>';
+	return '<p><a title="' . $option['linkto'] . $post->post_title.'" class="more-link" href="'. get_permalink($post->ID) . '">' . $option['readmore'] . '</a></p>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
