@@ -86,16 +86,43 @@ function wpak_init() {
   // Register some Scripts
   if (!is_admin()) {
     
-    wp_deregister_script('jquery');
-    wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', false, '1', true);
-    wp_enqueue_script('jquery');
-    
     wp_deregister_script('comment-reply');
     wp_deregister_script('l10n');
   }
   
 
 }
+
+
+
+
+// Register jQuery
+if (!function_exists('inc_jquery')) :
+function inc_jquery() {
+  wp_deregister_script('jquery');
+  wp_register_script('jquery', (is_ssl() ? 'https' : 'http'). '://ajax.googleapis.com/ajax/libs/jquery/' . JQUERY_VERSION . '/jquery.min.js', false, '1', true);
+  wp_enqueue_script('jquery');
+}
+add_action( 'wp_footer', 'inc_jquery' );
+
+endif;
+
+
+
+// Include local jQuery-version
+if (!function_exists('inc_jquery_local')) :
+
+function inc_jquery_local() {
+
+  if ( wp_script_is('jquery', 'done') ) :
+    ?>
+    <script>window.jQuery || document.write('<script src="<?php print JQUERY_VERSION_LOCAL; ?>"><\/script>')</script>
+    <?php
+  endif;
+}
+add_action( 'wp_print_footer_scripts', 'inc_jquery_local' );
+
+endif;
 
 
 
@@ -108,9 +135,10 @@ function wpak_init() {
  *
  */
 function script_loader_filter ($src) {
-  if (FALSE === strpos ($src, '//ajax.googleapis.com/')) {
+  if (FALSE === strpos ($src, 'ajax.googleapis.com')) {
     return $src;
   }
+
   $new_src = explode('?', $src);
   return $new_src[0];
   
