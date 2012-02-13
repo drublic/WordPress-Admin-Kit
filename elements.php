@@ -11,6 +11,15 @@
  */
 
 
+include('tmpl/checkbox.php');
+include('tmpl/checkboxes.php');
+include('tmpl/headlines.php');
+include('tmpl/imageupload.php');
+include('tmpl/select.php');
+include('tmpl/text.php');
+include('tmpl/textarea.php');
+
+
 
 
 /**
